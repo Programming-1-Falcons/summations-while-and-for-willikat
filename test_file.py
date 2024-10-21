@@ -4,14 +4,12 @@ import pytest
 
 def test_while():
     # Set up the test input (number to sum up to)
-    test_input = str(random.randint(1,100)) + "\n"
+    test_input = str(random.randint(1, 100)) + "\n"
     n = int(test_input)
-    # Expected output (sum of numbers from 1 n)
-    
-    expected_output = str(n*(n+1)//2) + "\n"
+    # Expected output (sum of numbers from 1 to n)
+    expected_output = str(n * (n + 1) // 2) + "\n"
 
     # Run the student's script and capture output
-    # Make sure this path matches the path where student scripts are stored
     result = subprocess.run(
         ['python3', 'while_summation.py'],  # Adjust this to the specific student script file
         input=test_input,
@@ -19,19 +17,23 @@ def test_while():
         capture_output=True
     )
 
+    # Print statements for debugging
+    print(f"Test input (n): {n}")
+    print(f"Expected output: {expected_output.strip()}")
+    print(f"Actual output: {result.stdout.strip()}")
+
     # Assert if the output is as expected
-    assert result.stdout.strip() == expected_output.strip(), f"Expected {expected_output}, but got {result.stdout.strip()}"
+    assert result.stdout.strip() == expected_output.strip(), f"Expected {expected_output.strip()}, but got {result.stdout.strip()}"
 
 def test_for():
     # Set up the test input (number to sum up to)
-    test_input = str(random.randint(1,100)) + "\n"
+    test_input = str(random.randint(1, 100)) + "\n"
     n = int(test_input)
-    
-    # Expected output (sum of numbers from 1 to 5)
-    expected_output = str(n*(n+1)//2) + "\n"
+
+    # Expected output (sum of numbers from 1 to n)
+    expected_output = str(n * (n + 1) // 2) + "\n"
 
     # Run the student's script and capture output
-    # Make sure this path matches the path where student scripts are stored
     result = subprocess.run(
         ['python3', 'for_summation.py'],  # Adjust this to the specific student script file
         input=test_input,
@@ -39,5 +41,10 @@ def test_for():
         capture_output=True
     )
 
+    # Print statements for debugging
+    print(f"Test input (n): {n}")
+    print(f"Expected output: {expected_output.strip()}")
+    print(f"Actual output: {result.stdout.strip()}")
+
     # Assert if the output is as expected
-    assert result.stdout.strip() == expected_output.strip(), f"Expected {expected_output}, but got {result.stdout.strip()}"
+    assert result.stdout.strip() == expected_output.strip(), f"Expected {expected_output.strip()}, but got {result.stdout.strip()}"
